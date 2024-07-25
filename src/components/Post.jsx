@@ -1,27 +1,26 @@
-export default function Post() {
+import { parseISO, formatISO9075 } from "date-fns";
+import { Link } from "react-router-dom";
+
+export default function Post({ author, date, text, title, _id }) {
   return (
     <div className="post">
       <div className="image">
-        <img
-          src="https://plus.unsplash.com/premium_photo-1720798652392-61f07be72d8a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D"
-          alt=""
-        />
+        <Link to={"/post/" + _id}>
+          <img
+            src="https://plus.unsplash.com/premium_photo-1720798652392-61f07be72d8a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyN3x8fGVufDB8fHx8fA%3D%3D"
+            alt=""
+          />
+        </Link>
       </div>
       <div className="text">
-        <h2>Dance Like No One Is Watchthing </h2>
+        <Link to={"/post/" + _id}>
+          <h2>{title}</h2>
+        </Link>
         <p className="info">
-          <a className="author">Lawsy</a>
-          <time>2024-07-17 15:45</time>
+          <a className="author">{author.username}</a>
+          <time>{formatISO9075(parseISO(date))}</time>
         </p>
-        <p className="summary">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <p className="summary">{text.slice(0, 100)}...</p>
       </div>
     </div>
   );

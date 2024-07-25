@@ -1,4 +1,8 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { UserContext } from "../UserContext";
 
 export default function Header() {
   return (
@@ -6,10 +10,6 @@ export default function Header() {
       <Link to="/" className="logo">
         MyBlog
       </Link>
-      <nav>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-      </nav>
     </header>
   );
 }

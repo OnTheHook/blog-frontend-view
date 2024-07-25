@@ -1,11 +1,9 @@
-import Post from "./Post";
+import PostList from "./PostList";
 
 export default function IndexPage() {
   return (
     <>
-      <Post />
-      <Post />
-      <Post />
+      <PostList />
     </>
   );
 }
